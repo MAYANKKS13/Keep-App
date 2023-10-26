@@ -1,0 +1,8 @@
+<div [ngStyle]="styleObject">
+  <h1>Notes</h1>
+  <mat-card *ngFor="let note of notes" [ngStyle]="cardStyle">
+      <mat-card-header>Title: {{note.title}}</mat-card-header>
+      <mat-card-content>Note: {{note.note}}</mat-card-content>
+    </mat-card>
+</div>
+

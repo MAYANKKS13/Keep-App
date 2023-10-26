@@ -1,0 +1,37 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Add Note
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form [ngStyle]="styleObject" #notesform="ngForm" (ngSubmit)="OnSubmit(notesform)">
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input #title="ngModel" name="title" matInput placeholder="Enter the title" [(ngModel)]="notesobj.title"
+                    required>
+            </mat-form-field>
+            <p *ngIf="title.dirty && title.errors?.['required']" class="text-danger">title should not be empty</p>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Note</mat-label>
+                <textarea matInput #note="ngModel" name="note" matInput placeholder="Enter the note" [(ngModel)]="notesobj.note"
+                required>
+                </textarea>
+            </mat-form-field>
+            <p *ngIf="note.dirty && note.errors?.['required']" class="text-danger">note should not be empty</p>
+
+            
+
+            <div class="row"> <button mat-raised-button color="primary">Save</button></div>
+        </form>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    </mat-expansion-panel>
+
+
+</mat-accordion>
